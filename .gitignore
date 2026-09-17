@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Model checkpoints
+checkpoints/
+
+# Experiment logs
+wandb/
+
+# Dataset
+data/
+
+# OS files
+.DS_Store
+
+# Trained models
+model_saved/

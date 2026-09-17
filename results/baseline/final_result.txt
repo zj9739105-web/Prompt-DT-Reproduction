@@ -1,0 +1,26 @@
+Prompt Decision Transformer Reproduction
+
+Environment:
+cheetah_dir
+
+Training:
+5000 iterations
+
+Device:
+CPU
+
+
+Final Evaluation Result:
+
+Task: cheetah_dir-0
+Return Mean: 681.53
+Return Std: 16.68
+
+
+Task: cheetah_dir-1
+Return Mean: 1166.08
+Return Std: 48.83
+
+
+Checkpoint:
+prompt_model_cheetah_dir_TRAIN_expert_TEST_expert_iter_4999
