@@ -1,68 +1,108 @@
-# Prompt Decision Transformer Reproduction
+# Prompt-DT Reproduction
 
+This repository contains my reproduction study of:
 
-## Overview
+"Prompting Decision Transformer for Few-Shot Policy Generalization"
 
-This project reproduces the experiments of Prompt Decision Transformer for Offline Meta-Reinforcement Learning.
+The project aims to reproduce the main experimental pipeline of Prompt-DT and explore the influence of trajectory prompt length on few-shot policy generalization.
 
-The goal is to understand and reproduce the implementation of prompt-based decision transformers in offline meta-RL.
+---
 
+## 1. Paper
 
-## Environment
+Prompt-DT introduces trajectory prompts into Decision Transformer to achieve few-shot adaptation in offline reinforcement learning.
+
+The original paper evaluates the method on MuJoCo control environments.
+
+---
+
+## 2. Environment
 
 - OS: Ubuntu (WSL)
 - Python: 3.8
 - Framework: PyTorch
-- Environment: MuJoCo
-- Hardware: CPU
+- Device: CPU
 
+---
 
-## Experiment Setup
+## 3. Reproduction
 
-### Environment
+The reproduction process includes:
 
-HalfCheetah-dir
+### Environment Setup
 
+- Install dependencies
+- Configure MuJoCo environments
+- Prepare expert datasets
 
 ### Training
 
-- Training iterations: 5000
-- Device: CPU
-- Evaluation episodes: 5 per task
+The model is trained on HalfCheetahDir expert demonstrations.
+
+### Evaluation
+
+The trained model is evaluated on target tasks:
+
+- cheetah_dir-0
+- cheetah_dir-1
+
+Metrics:
+
+- Return Mean
+- Return Std
+
+---
+
+## 4. Results
+
+Experimental results are organized as:
+
+results/
+├── original/
+│
+└── new/
+
+`original/` contains the reproduction experiment.
+
+`new/` contains additional prompt length experiments.
+
+---
+
+## 5. Additional Analysis
+
+An additional experiment investigates:
+
+"How does changing test-time prompt length influence policy performance?"
+
+The trained model remains fixed while only the testing prompt length changes.
+
+Detailed settings and analysis are provided in:
+
+results/new/README.md
 
 
-### Model
+---
 
-Checkpoint:
-prompt_model_cheetah_dir_TRAIN_expert_TEST_expert_iter_4999
+## 6. Limitations
 
+Due to limited computational resources, experiments were conducted with reduced training iterations.
 
-## Reproduction Results
+Therefore, the additional experiments are mainly used for exploratory analysis.
 
-Final evaluation results:
+A more rigorous evaluation requires:
 
+- longer training schedules
+- multiple random seeds
+- statistical analysis
 
-| Task | Return Mean | Return Std |
-| ---- | ----------- | ---------- |
-| cheetah_dir-0 | 681.53 | 16.68 |
-| cheetah_dir-1 | 1166.08 | 48.83 |
+---
 
+## Citation
 
-## Visualization
-
-### Training Action Error
-
-![Action Error](results/baseline/figures/action_error_curve.png)
-
-
-### Evaluation Return
-
-![Cheetah Dir 0](results/baseline/figures/cheetah_dir0_return_curve.png)
-
-
-![Cheetah Dir 1](results/baseline/figures/cheetah_dir1_return_curve.png)
-
-
-## Future Work
-
-Further experiments will investigate how different prompt settings affect offline meta-RL performance.
+```bibtex
+@inproceedings{xu2022prompting,
+title={Prompting Decision Transformer for Few-Shot Policy Generalization},
+author={Xu et al.},
+booktitle={ICML},
+year={2022}
+}
